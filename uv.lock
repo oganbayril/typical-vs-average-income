@@ -295,7 +295,7 @@ wheels = [
 ]
 
 [[package]]
-name = "typical-vs-average"
+name = "typical-vs-average-income"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

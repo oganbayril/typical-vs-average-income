@@ -1,5 +1,5 @@
 [project]
-name = "typical-vs-average"
+name = "typical-vs-average-income"
 version = "0.1.0"
 description = "Median vs mean income across European and OECD countries: how far the typical person is from the average."
 readme = "README.md"

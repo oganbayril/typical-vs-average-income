@@ -1,4 +1,4 @@
-# typical-vs-average
+# typical-vs-average-income
 
 How far is the typical person from the average? The median household income
 as a share of the mean, across European and OECD countries.

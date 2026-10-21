@@ -1,4 +1,4 @@
-# typical-vs-average
+# typical-vs-average-income
 
 Portfolio project (junior data analyst): median ÷ mean equivalised
 disposable income ("the typical person has X% of the average") across
