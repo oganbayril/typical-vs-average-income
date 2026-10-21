@@ -1,0 +1,10 @@
+[project]
+name = "typical-vs-average"
+version = "0.1.0"
+description = "Median vs mean income across European and OECD countries: how far the typical person is from the average."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=3.0.6",
+    "requests>=2.34.2",
+]
