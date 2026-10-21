@@ -1,0 +1,84 @@
+"""Country code lookups.
+
+Eurostat uses its own two-letter codes, which are mostly ISO 3166 alpha-2 with
+two exceptions: Greece is "EL" (ISO: GR) and the United Kingdom is "UK"
+(ISO: GB). The OECD and Plotly's world map both use ISO 3166 alpha-3 ("DEU").
+Everything is converted to ISO-3 so the two sources can be joined and mapped.
+
+The mapping is written out by hand instead of using a library such as
+pycountry, because pycountry does not know Eurostat's "EL"/"UK" codes and the
+list is short enough to check by eye.
+"""
+
+EUROSTAT_TO_ISO3 = {
+    # EU member states
+    "AT": "AUT",
+    "BE": "BEL",
+    "BG": "BGR",
+    "CY": "CYP",
+    "CZ": "CZE",
+    "DE": "DEU",
+    "DK": "DNK",
+    "EE": "EST",
+    "EL": "GRC",  # Eurostat code differs from ISO alpha-2 "GR"
+    "ES": "ESP",
+    "FI": "FIN",
+    "FR": "FRA",
+    "HR": "HRV",
+    "HU": "HUN",
+    "IE": "IRL",
+    "IT": "ITA",
+    "LT": "LTU",
+    "LU": "LUX",
+    "LV": "LVA",
+    "MT": "MLT",
+    "NL": "NLD",
+    "PL": "POL",
+    "PT": "PRT",
+    "RO": "ROU",
+    "SE": "SWE",
+    "SI": "SVN",
+    "SK": "SVK",
+    # EFTA, United Kingdom, candidate and potential candidate countries
+    "CH": "CHE",
+    "IS": "ISL",
+    "LI": "LIE",  # in scope, but no income survey data in Eurostat (checked)
+    "NO": "NOR",
+    "UK": "GBR",  # Eurostat code differs from ISO alpha-2 "GB"
+    "AL": "ALB",
+    "BA": "BIH",
+    "ME": "MNE",
+    "MK": "MKD",
+    "RS": "SRB",
+    "TR": "TUR",
+    # Kosovo has no official ISO code. "XKX" is the user-assigned code used by
+    # the EU and World Bank.
+    "XK": "XKX",
+}
+
+# The 38 OECD member countries (2026). Those with no Eurostat income data get
+# the OECD extension layer instead (see build_headline.py). The OECD tables
+# also contain some non-members (e.g. Brazil, China); they are out of scope.
+OECD_MEMBERS_ISO3 = {
+    "AUS", "AUT", "BEL", "CAN", "CHE", "CHL", "COL", "CRI", "CZE", "DEU",
+    "DNK", "ESP", "EST", "FIN", "FRA", "GBR", "GRC", "HUN", "IRL", "ISL",
+    "ISR", "ITA", "JPN", "KOR", "LTU", "LUX", "LVA", "MEX", "NLD", "NOR",
+    "NZL", "POL", "PRT", "SVK", "SVN", "SWE", "TUR", "USA",
+}
+
+# Display names for the map hover, by ISO-3. Short common English names.
+ISO3_NAMES = {
+    "ALB": "Albania", "AUS": "Australia", "AUT": "Austria", "BEL": "Belgium",
+    "BGR": "Bulgaria", "BIH": "Bosnia and Herzegovina", "CAN": "Canada",
+    "CHE": "Switzerland", "CHL": "Chile", "COL": "Colombia", "CRI": "Costa Rica",
+    "CYP": "Cyprus", "CZE": "Czechia", "DEU": "Germany", "DNK": "Denmark",
+    "ESP": "Spain", "EST": "Estonia", "FIN": "Finland", "FRA": "France",
+    "GBR": "United Kingdom", "GRC": "Greece", "HRV": "Croatia", "HUN": "Hungary",
+    "IRL": "Ireland", "ISL": "Iceland", "ISR": "Israel", "ITA": "Italy",
+    "JPN": "Japan", "KOR": "South Korea", "LTU": "Lithuania", "LUX": "Luxembourg",
+    "LIE": "Liechtenstein", "LVA": "Latvia", "MEX": "Mexico", "MKD": "North Macedonia", "MLT": "Malta",
+    "MNE": "Montenegro", "NLD": "Netherlands", "NOR": "Norway",
+    "NZL": "New Zealand", "POL": "Poland", "PRT": "Portugal", "ROU": "Romania",
+    "SRB": "Serbia", "SVK": "Slovakia", "SVN": "Slovenia", "SWE": "Sweden",
+    "TUR": "Türkiye", "USA": "United States", "XKX": "Kosovo",
+}
