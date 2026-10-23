@@ -1,0 +1,33 @@
+# typical-vs-average-income: static site served from /srv/typical-vs-average-income.
+# Install with: add-site typical-vs-average-income /root/typical-vs-average-income.caddy typical-vs-average-income.duckdns.org
+# (add-site replaces __DOMAIN__). Caddy gets and renews the TLS certificate itself.
+# Based on vps-infra's templates/static.caddy, plus the frame-ancestors header
+# and the CSV downloads (as in food-housing-spending-share).
+
+__DOMAIN__ {
+	root * /srv/typical-vs-average-income
+	file_server
+	encode zstd gzip
+
+	header {
+		# HSTS for this host only: no includeSubDomains, no preload.
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		# The page carries its full Content-Security-Policy in a <meta> tag
+		# (script hashes written by src/build_map.py). frame-ancestors only
+		# works as a header, so it is set here; browsers enforce both policies.
+		Content-Security-Policy "frame-ancestors 'none'"
+		-Server
+	}
+
+	# The data files download instead of opening as text.
+	@csv path /snapshot_median_mean_ratio.csv /layer_median_mean_ratio.csv
+	header @csv Content-Disposition "attachment"
+
+	log {
+		output file /var/log/caddy/typical-vs-average-income.log
+		format json
+	}
+}
