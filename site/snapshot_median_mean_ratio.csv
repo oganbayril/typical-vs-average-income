@@ -1,0 +1,46 @@
+country,year,income_year,value,source,flag,unit,tier_uncertain,note
+CHL,2023,2022,0.6912,OECD,,ratio (median / mean equivalised disposable income),False,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03."
+CRI,2026,2025,0.6924,OECD,,ratio (median / mean equivalised disposable income),False,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03."
+TUR,2025,2024,0.7,Eurostat,,ratio (median / mean equivalised disposable income),False,
+MEX,2023,2022,0.7575,OECD,,ratio (median / mean equivalised disposable income),True,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03. Tier may differ under Eurostat's method."
+BGR,2025,2024,0.7929,Eurostat,,ratio (median / mean equivalised disposable income),False,
+USA,2024,2023,0.8022,OECD,,ratio (median / mean equivalised disposable income),True,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03. Tier may differ under Eurostat's method."
+GBR,2024,2023,0.8043,OECD,,ratio (median / mean equivalised disposable income),True,Eurostat stopped covering this country after survey year 2018 (income year 2017); this is the OECD value. In the years both sources cover (survey years 2005-2018) the OECD ratio is -0.039 on average compared with Eurostat (range -0.061 to -0.011). Tier may differ under Eurostat's method.
+LVA,2025,2024,0.8363,Eurostat,,ratio (median / mean equivalised disposable income),False,
+LUX,2025,2024,0.8386,Eurostat,break,ratio (median / mean equivalised disposable income),False,
+LTU,2025,2024,0.8396,Eurostat,provisional,ratio (median / mean equivalised disposable income),False,
+CYP,2025,2024,0.8422,Eurostat,,ratio (median / mean equivalised disposable income),False,
+PRT,2025,2024,0.8499,Eurostat,,ratio (median / mean equivalised disposable income),False,
+CHE,2024,2023,0.857,Eurostat,,ratio (median / mean equivalised disposable income),False,
+ALB,2025,2024,0.8595,Eurostat,,ratio (median / mean equivalised disposable income),False,
+HUN,2025,2024,0.861,Eurostat,,ratio (median / mean equivalised disposable income),False,
+AUS,2021,2020,0.8613,OECD,,ratio (median / mean equivalised disposable income),False,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03."
+JPN,2022,2021,0.8639,OECD,,ratio (median / mean equivalised disposable income),False,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03."
+DEU,2025,2024,0.867,Eurostat,,ratio (median / mean equivalised disposable income),False,
+NZL,2023,2022,0.8688,OECD,,ratio (median / mean equivalised disposable income),False,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03."
+FRA,2025,2024,0.8693,Eurostat,,ratio (median / mean equivalised disposable income),False,
+ISR,2024,2023,0.8717,OECD,,ratio (median / mean equivalised disposable income),True,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03. Tier may differ under Eurostat's method."
+EST,2025,2024,0.8735,Eurostat,,ratio (median / mean equivalised disposable income),False,
+GRC,2025,2024,0.8744,Eurostat,,ratio (median / mean equivalised disposable income),False,
+KOR,2024,2023,0.8786,OECD,,ratio (median / mean equivalised disposable income),True,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03. Tier may differ under Eurostat's method."
+DNK,2025,2024,0.8799,Eurostat,,ratio (median / mean equivalised disposable income),False,
+SRB,2025,2024,0.8808,Eurostat,,ratio (median / mean equivalised disposable income),False,
+ITA,2025,2024,0.8821,Eurostat,,ratio (median / mean equivalised disposable income),False,
+IRL,2025,2024,0.8858,Eurostat,,ratio (median / mean equivalised disposable income),False,
+CAN,2024,2023,0.8858,OECD,,ratio (median / mean equivalised disposable income),True,"OECD Income Distribution Database, not Eurostat: a different method. Where both sources exist, they usually agree within ±0.03. Tier may differ under Eurostat's method."
+ESP,2025,2024,0.8877,Eurostat,,ratio (median / mean equivalised disposable income),False,
+MLT,2025,2024,0.8882,Eurostat,,ratio (median / mean equivalised disposable income),False,
+FIN,2025,2024,0.8896,Eurostat,,ratio (median / mean equivalised disposable income),False,
+NLD,2025,2024,0.9074,Eurostat,,ratio (median / mean equivalised disposable income),False,
+CZE,2025,2024,0.9082,Eurostat,,ratio (median / mean equivalised disposable income),False,
+SWE,2025,2024,0.9129,Eurostat,,ratio (median / mean equivalised disposable income),False,
+MNE,2024,2023,0.916,Eurostat,,ratio (median / mean equivalised disposable income),False,
+AUT,2025,2024,0.917,Eurostat,,ratio (median / mean equivalised disposable income),False,
+POL,2025,2024,0.9234,Eurostat,,ratio (median / mean equivalised disposable income),False,
+BEL,2025,2024,0.924,Eurostat,,ratio (median / mean equivalised disposable income),False,
+SVN,2025,2024,0.9265,Eurostat,,ratio (median / mean equivalised disposable income),False,
+NOR,2025,2024,0.9296,Eurostat,,ratio (median / mean equivalised disposable income),False,
+HRV,2025,2024,0.9354,Eurostat,,ratio (median / mean equivalised disposable income),False,
+ROU,2025,2024,0.9358,Eurostat,,ratio (median / mean equivalised disposable income),False,
+SVK,2025,2024,0.9374,Eurostat,break,ratio (median / mean equivalised disposable income),False,
+MKD,2024,2023,0.9499,Eurostat,,ratio (median / mean equivalised disposable income),False,
