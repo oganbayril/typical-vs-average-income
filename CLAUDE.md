@@ -33,7 +33,8 @@ structure and deploy setup.
 - Country scope: same as food-housing-spending-share (EU27, EFTA, UK,
   candidates incl. Kosovo, all 38 OECD members).
 - Processed data committed; `data/raw/` gitignored.
-- Tooling: Python 3.13, uv + requirements.txt, pandas, requests. Run with
+- Tooling: Python 3.13, uv + requirements.txt, pandas, requests, plotly,
+  kaleido (PNG export). Run with
   `uv run python`, never bare `python`.
 
 Known gotcha: Eurostat uses `EL`/`UK`, ISO uses `GR`/`GB`; WID uses `GR`,
@@ -56,9 +57,10 @@ Known gotcha: Eurostat uses `EL`/`UK`, ISO uses `GR`/`GB`; WID uses `GR`,
   coverage report (2026-10-19)
 - [x] UK/Iceland snapshot, income_year, project flags (2026-10-21)
 - [x] Tiers: scheme B (0.73/0.82/0.90), tier_uncertain column (2026-10-21)
-- [ ] Map (copy food-housing-spending-share `src/build_map.py` approach)
+- [x] Headline map: `src/build_map.py` -> `site/index.html` (2026-10-21, committed 2026-10-23). Second round: older-data outline, Tiers/Continuous toggle, wording "has X% of the average income", resolution test (kept 50, DATA_NOTES M1).
 - [ ] Deploy (Hetzner VPS, Caddy per-site file, DuckDNS subdomain)
 
 Pipeline: `load_eurostat.py` -> `load_oecd.py` -> `build_headline.py` ->
-`check_robustness.py` -> `build_snapshot.py` -> `report_coverage.py` (all in
+`check_robustness.py` -> `build_snapshot.py` -> `report_coverage.py` ->
+`build_map.py` (all in
 `src/`).

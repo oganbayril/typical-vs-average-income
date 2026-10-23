@@ -3,7 +3,14 @@
 How far is the typical person from the average? The median household income
 as a share of the mean, across European and OECD countries.
 
-*Work in progress: the data layer is built, the map is not.*
+*Work in progress: the headline map is built (`site/index.html`), not deployed yet.*
+
+![The typical person's income as a % of the average, Europe, latest year per country](images/map_latest_europe.png)
+
+*Latest value per country, in tiers. World view: [images/map_latest.png](images/map_latest.png).
+OECD values (non-European countries, and the UK's latest value) are hatched only in the live
+page; these static images show them unhatched. The open circles mark OECD values whose tier
+may differ under Eurostat's method.*
 
 ## The question
 
@@ -140,6 +147,43 @@ Eurostat series has ended, it shows the OECD value if that is newer
 
 Full source checks: [DATA_NOTES.md](DATA_NOTES.md).
 
+## Map notes
+
+### Why mixing income years in the Latest view is acceptable
+
+The Latest view shows each country's most recent value, so income years range
+from 2020 to 2025 (most are 2023-2024). A country's ratio moves slowly. In
+Eurostat's yearly data, the change between two years k apart, over all
+countries and years:
+
+| Years apart | Median change | 90th percentile |
+|---|---|---|
+| 1 | 0.008 | 0.025 |
+| 2 | 0.010 | 0.031 |
+| 3 | 0.011 | 0.034 |
+| 4 | 0.012 | 0.039 |
+
+A value one year older than most typically differs by less than 0.01. Even at
+four years old, 9 in 10 values have moved less than 0.04, about the same as
+the difference between Eurostat and OECD (±0.03). So an older value can only
+change the picture for a country close to a tier line. The five countries
+with data from income year 2022 or earlier have a dashed outline. **Caveat:**
+of these, Mexico (income year 2022, 0.757) is only 0.027 above the 0.73
+line, less than the 90th-percentile two-year change (0.030), so its tier
+could be different with current data. The other four (Australia, Japan,
+Chile, New Zealand) are further from a line than 9 in 10 changes of their
+data's age, though Australia and New Zealand only just.
+(`src/probes/probe_year_mixing.py`.)
+
+### Base map resolution
+
+The map uses Natural Earth's 1:50m outlines (`RESOLUTION = 50` in
+`src/build_map.py`), not the lighter 1:110m. At 1:110m Malta's shape is
+empty, so Malta would disappear from the map despite having data. 1:110m
+would be about 3.7 times faster (Edge, Europe view: a zoom/pan redraw takes
+19 ms instead of 72 ms, a year change 53 ms instead of about 150 ms), and its
+coastlines turn blocky when zoomed in. Details: DATA_NOTES.md, M1.
+
 ## Reproduce
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.13 (or
@@ -153,6 +197,7 @@ uv run python src/build_headline.py    # -> layer_median_mean_ratio.csv
 uv run python src/check_robustness.py  # Eurostat vs OECD comparison
 uv run python src/build_snapshot.py    # -> snapshot_median_mean_ratio.csv
 uv run python src/report_coverage.py   # countries and years per layer
+uv run python src/build_map.py         # -> site/index.html, images/*.png
 ```
 
 The probes used to check the sources are in [src/probes/](src/probes/).

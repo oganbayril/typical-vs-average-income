@@ -271,7 +271,7 @@ only. This drops 26 early Canada values (1976-2001), which stay in
 
 **T1. Tier boundaries vs the ±0.03 source uncertainty**
 (`src/probes/probe_tiers.py`, snapshot of 45 countries, income years
-2020-2025, 41 of them 2023-2024).
+2020-2025, 39 of them 2023-2024; corrected 2026-10-21, first noted as 41).
 - No boundary can be fully robust. The widest gap between neighbouring
   countries is 0.0575 (TUR 0.700 to MEX 0.758). Even at its midpoint, Mexico
   is 0.0275 away. A boundary with nobody within 0.03 would need a gap of at
@@ -293,3 +293,45 @@ boundary, with the note "Tier may differ under Eurostat's method": MEX,
 USA, GBR, ISR, KOR, CAN. Eurostat countries are not marked, since the
 ±0.03 measures the difference between sources, not sampling error. Values
 are unchanged. Kosovo stays grey (confirmed).
+
+## 7. Map checks (2026-10-21)
+
+**Y1. Mixing income years in the latest view**
+(`src/probes/probe_year_mixing.py`, `src/year_changes.py`). This is the
+absolute change in a country's Eurostat ratio between income years t-k and t,
+across all countries and years:
+
+| k years | pairs | median | 90th pct | median, no break inside | 90th pct, no break inside |
+|---|---|---|---|---|---|
+| 1 | 681 | 0.008 | 0.025 | 0.008 | 0.023 |
+| 2 | 645 | 0.010 | 0.031 | 0.010 | 0.030 |
+| 3 | 609 | 0.011 | 0.034 | 0.011 | 0.034 |
+| 4 | 573 | 0.012 | 0.039 | 0.012 | 0.038 |
+
+The ratio moves slowly. Data one year old (2023 vs most countries' 2024)
+typically differs by less than 0.01. At four years old, 1 in 10 values has
+moved by about 0.04, as much as the two sources differ. Of the five
+countries with older data (income year 2022 or earlier: AUS 2020, JPN 2021,
+MEX, CHL, NZL 2022), only Mexico is close enough to a line (0.027 from 0.73)
+that a typical change could put it in another tier. The map gives these
+five a dashed outline and "Older data: income year X" in the hover.
+
+**M1. Base map resolution** (`build_map.RESOLUTION`). Measured in Edge at
+1280 px, Europe view:
+
+| | 1:50m (kept) | 1:110m |
+|---|---|---|
+| Points in the drawn outlines | 27,035 | 8,302 |
+| One redraw while zooming/panning (median of 15) | 72 ms | 19 ms |
+| Switching year (full redraw) | 146-169 ms | 53 ms |
+| Malta | drawn | empty shape (not visible) |
+
+At 110m, zoom and pan reach about 50 frames a second instead of about 14.
+Coastlines become visibly coarse when zoomed in (small islands turn into
+triangles), and Malta, which has data, disappears. Kept at 50 for now.
+
+**M2. Decorations (hatching, older outline) only run after redraws.** They
+are re-applied on Plotly's afterplot and animated events, coalesced to one run
+per screen frame. Measured: 1 run on load, 0 extra runs over 60 hover moves
+and a wheel zoom, +1 for a view preset, +1 for a theme change (four restyles
+coalesced into one).

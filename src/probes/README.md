@@ -13,6 +13,7 @@ Raw downloads go to `data/raw/probes/` (not in git). Run from the project root:
 | `probe_wid.py` | WID top 10% share and data-quality grade for all countries in scope (reads only the needed files from the 900 MB bulk zip) | `uv run python src/probes/probe_wid.py` |
 | `probe_spread.py` | Spread and rank correlation of the measures in one year (needs the layer files, so run the pipeline first) | `uv run python src/probes/probe_spread.py` |
 | `probe_tiers.py` | Candidate tier schemes for the latest-year ratio: countries within ±0.03 of each boundary, largest gaps (needs the snapshot file) | `uv run python src/probes/probe_tiers.py` |
+| `probe_year_mixing.py` | How much the ratio changes over 1-4 income years, and which older latest-view values could have changed tier | `uv run python src/probes/probe_year_mixing.py` |
 | `probe_suspicious.py` | The three series checked before publishing: Türkiye making ends meet, Slovakia and North Macedonia median/mean | `uv run python src/probes/probe_suspicious.py` |
 
 `probe_eurostat.py` and `probe_oecd.py` take a minute or two (the full
